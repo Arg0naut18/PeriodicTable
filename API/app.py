@@ -1,11 +1,15 @@
 from flask import Flask, jsonify, Response
 from flask_cors import CORS
 import pandas as pd
+from mongo_connector import Connector
+import os
+
 
 app = Flask(__name__)
 CORS(app)
+collection = Connector()
 
-data = pd.read_json('data/data.json')
+data = pd.DataFrame(collection.get_data())
 
 METHOD_NOT_ALLOWED = "Method not allowed!"
 DOES_NOT_EXIST = "Does not exist!"
@@ -24,7 +28,7 @@ def home():
 def atomicnumber(atomic_number):
     if atomic_number not in range(1, 119):
         return jsonify(message=DOES_NOT_EXIST, status=404)
-    return Response(data.loc[atomic_number].to_json(indent=4, orient='records'), mimetype=MIMETYPE)
+    return Response(data.loc[[atomic_number-1]].to_json(indent=4, orient='records'), mimetype=MIMETYPE)
 
 @app.route('/element/atomicname/<string:atomic_name>')
 def atomicname(atomic_name):
