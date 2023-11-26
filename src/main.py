@@ -13,7 +13,7 @@ class Element:
     electronegativity: float
     atomic_radius: int
     ion_radius: str
-    vanDerWaals_radius: str
+    vanderwaals_radius: str
     ionization_energy: int
     electron_affinity: int
     oxidation_states: int
@@ -24,6 +24,3 @@ class Element:
     density: float
     group_block: str
     year_of_discovery: int
-
-
-
