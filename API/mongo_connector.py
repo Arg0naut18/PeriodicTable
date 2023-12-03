@@ -12,7 +12,6 @@ class Connector:
         self._db = self._client["PeriodicTable"]
         self._data = self._db["Elements"]
 
-    
     def ping(self):
         try:
             self._client.admin.command('ping')

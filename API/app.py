@@ -2,7 +2,6 @@ from flask import Flask, jsonify, Response
 from flask_cors import CORS
 import pandas as pd
 from mongo_connector import Connector
-import os
 
 
 app = Flask(__name__)
@@ -52,4 +51,4 @@ def atomicstate(state):
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0",port=80,debug=True)
+    app.run(port=80,debug=True)
